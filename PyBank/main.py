@@ -13,27 +13,27 @@ change_profit_losses = []
 with open(pybank_csv, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
+# Skip the first row which is column titles
     header = next(csvreader)
 
+# Iterate through each row identifying the months as the first column and the profit/losses as the second column
     for row in csvreader:
         months.append(str(row[0]))
         profit_losses.append(int(row[1]))
 
-
-
+# Enter another for loop to subtract the current row's profit/losses from the next row's value
     for i in range(0, len(profit_losses) -1):
         change_profit_losses.append(profit_losses[i+1]-profit_losses[i])
 
-        
+# Establish the maximum and minimum values from the change list
 greatest_increase_profit = max(change_profit_losses)
 greatest_decrease_profit = min(change_profit_losses)
 
+# Index into the list to pull out the month value of those max and min values (add 1 because python is zero based)
 greatest_increase_month = months[change_profit_losses.index(greatest_increase_profit) + 1] 
 greatest_decrease_month = months[change_profit_losses.index(greatest_decrease_profit) + 1]
 
-
-    # Print out the values
-
+# Make the results into a variable that we can call to run
 analysis = (
 f"\n"
 f"Financial Analysis\n"
@@ -44,33 +44,12 @@ f"Average Change: ${round(sum(change_profit_losses)/len(change_profit_losses),2)
 f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase_profit})\n"
 f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease_profit})\n"
 )
+# Print the values
 print(analysis)
-
 
 # Write output file
 output_file = os.path.join("Analysis", "pybank.txt")
 
+# Open a text file and populate with the analysis data
 with open(output_file, "w", newline='') as txtfile:
     txtfile.write(analysis)
-
-
-# Define the function and have it accept 'pybank_data' as its sole parameter
-# def print_pybank(pybank_data):
-#     # Assign values to variables
-#     months = str(pybank_data[0])
-#     profit_losses = int(pybank_data[1])
-
-#     # Total number of months included in the dataset
-#     total_months = len(months)
-
-#     # Net total amount of profit/losses over the entire period
-#     net_total = sum(profit_losses)
-
-#     # Average of the changes in profit/losses over the entire period
-#     average_value = net_total/total_months
-
-#     # Greatest increase in profits/losses over the entire period
-#     maximum_value = max(profit_losses)
-    
-#     # Greatest decrease in profits/losses over the entire period
-#     minimum_value = min(profit_losses)
