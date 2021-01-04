@@ -4,7 +4,7 @@ import csv
 # Define path to collect data
 pybank_csv = os.path.join('Resources','budget_data.csv')
 
-# Assign variables as lists
+# Assign variables as empty lists
 months = []
 profit_losses = []
 change_profit_losses = []

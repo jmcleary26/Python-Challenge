@@ -1,4 +1,9 @@
 # Python-Challenge
 Python Challenge
 
-This python challenge 
+
+This python challenge combined reading and writing CSVs into VS code, iterating across lists and dictionaries, and  utilizing built in python functions to analyze data from a bank and an election. I was able to combine many lessons from our Python unit to obtain the data needed to analyze each data set and produce the correct results. 
+
+For the PyBank challenge, I started off by establishing some empty lists that I would be using to collect data from the file and reading in the CSV provided. I then created a for loop to iterate through each row and grab the date and profit/losses value while populating the lists that I had created above. I then established another for loop to iterate through each row and subtract the current row's value from the next row's value to track the changes over each month. After setting up the loops, I was able to collect the greatest increase and decrease in profit/losses from the lists that I obtained and also index into the change list to extract the month of those maximum and minimum values. At the end, I established a variable to print the results of the bank analysis and wrote out a text file. 
+
+For the PyPoll challenge, I also started off by establishing some variables to hold the data and reading in the CSV provided. This time, I set each variable equal to zero since the goal was to count the total number of votes and votes per candidate. Then, I set up my for loop to iterate through each row in the CSV and add up the total number of votes in the file. In order to grab the number of votes per candidate, I established a conditional if statement that added one to each candidate's total based on their names. Outside of the for loop, I calculated the percent total per candidate and then zipped together the two lists of each candidate and their vote totals into a dictionary to establish the winner. I also created an analysis variable to print the results of the election and then wrote out a text file. 
